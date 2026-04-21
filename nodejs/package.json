@@ -1,0 +1,23 @@
+{
+    "name": "@robotipy/botmonitor",
+    "version": "1.0.0",
+    "description": "Node.js SDK for BotMonitor — send telemetry, track jobs, and monitor bots.",
+    "main": "src/index.js",
+    "exports": {
+        ".": "./src/index.js"
+    },
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/robotipy/botmonitor-nodejs"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "botmonitor",
+        "telemetry",
+        "monitoring",
+        "rpa"
+    ]
+}
