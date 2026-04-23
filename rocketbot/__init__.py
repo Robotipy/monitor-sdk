@@ -74,6 +74,34 @@ try:
         whereToStore = GetParams("whereToStore")
         SetVar(whereToStore, result)
 
+    if (module == "startJob"):
+
+        job_id = GetParams("job_id")
+        job_name = GetParams("job_name")
+        meta = GetParams("meta")
+
+        if meta:
+            meta = json.loads(meta)
+
+        result = botmonitor_I.startJob(job_id, job_name, meta)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, result)
+
+    if (module == "endJob"):
+
+        job_id = GetParams("job_id")
+        status = GetParams("status") or "ok"
+        meta = GetParams("meta")
+
+        if meta:
+            meta = json.loads(meta)
+
+        result = botmonitor_I.endJob(job_id, status, meta)
+
+        whereToStore = GetParams("whereToStore")
+        SetVar(whereToStore, result)
+
     if (module == "sendData"):
 
         table = GetParams("table")

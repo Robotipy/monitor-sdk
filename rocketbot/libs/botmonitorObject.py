@@ -36,6 +36,35 @@ class BotMonitorObject:
         r = requests.post(f"{self.api_url}/api/logs", headers=self.headers, json=body)
         return r.json()
 
+    def startJob(self, job_id, job_name=None, meta=None):
+        body = {
+            "level": "INFO",
+            "message": f"Job started: {job_name or job_id}",
+            "type": "start",
+            "job_id": job_id,
+        }
+        if job_name:
+            body["job_name"] = job_name
+        if meta is not None:
+            body["meta"] = meta
+
+        r = requests.post(f"{self.api_url}/api/logs", headers=self.headers, json=body)
+        return r.json()
+
+    def endJob(self, job_id, status="ok", meta=None):
+        body = {
+            "level": "ERROR" if status == "error" else "INFO",
+            "message": f"Job ended: {job_id}",
+            "type": "end",
+            "job_id": job_id,
+            "status": status,
+        }
+        if meta is not None:
+            body["meta"] = meta
+
+        r = requests.post(f"{self.api_url}/api/logs", headers=self.headers, json=body)
+        return r.json()
+
     def sendData(self, table, row, columns=None):
         body = {
             "table": table,
