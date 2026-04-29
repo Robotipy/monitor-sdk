@@ -64,6 +64,7 @@ try:
         payload = GetParams("payload")
         durationMs = GetParams("durationMs")
 
+        rocketbot.log(message, level.upper())
         if payload:
             payload = json.loads(payload)
         if durationMs:
@@ -152,4 +153,3 @@ try:
 except Exception as e:
     print("\x1B[" + "31;40mAn error occurred\x1B[" + "0m")
     PrintException()
-    raise e
